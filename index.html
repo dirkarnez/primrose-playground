@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <style>
+      button {
+         width: 5em;
+         height: 5em;
+      }
+   </style>
+</head>
+
+<body>
+   <canvas id="app" style="width:50em;height:25em"></canvas>
+   <br>
+   <button class="key" data-key="1">1</button>
+   <button class="key" data-key="2">2</button>
+   <button class="key" data-key="3">3</button>
+   <button class="key" data-key="4">4</button>
+   <button class="key" data-key="5">5</button>
+   <button class="key" data-key="6">6</button>
+   <button class="key" data-key="7">7</button>
+   <button class="key" data-key="8">8</button>
+   <button class="key" data-key="9">9</button>
+   <button class="key" data-key="0">0</button>
+   <button class="key" data-key="-">-</button>
+   <button class="key" data-key="=">=</button>
+   <button id="bksp">Bksp</button>
+   <br>
+   
+   <button class="key" data-key="q">q</button>
+   <button class="key" data-key="w">w</button>
+   <button class="key" data-key="e">e</button>
+   <button class="key" data-key="r">r</button>
+   <button class="key" data-key="t">t</button>
+   <button class="key" data-key="y">y</button>
+   <button class="key" data-key="u">u</button>
+   <button class="key" data-key="i">i</button>
+   <button class="key" data-key="o">o</button>
+   <button class="key" data-key="p">p</button>
+   <button class="key" data-key="{">{</button>
+   <button class="key" data-key="}">}</button>
+   <button class="key" data-key="}">;</button>
+   <br>
+   
+   
+
+   <button class="key" data-key="a">a</button>
+   <button class="key" data-key="s">s</button>
+   <button class="key" data-key="d">d</button>
+   <button class="key" data-key="f">f</button>
+   <button class="key" data-key="g">g</button>
+   <button class="key" data-key="h">h</button>
+   <button class="key" data-key="j">j</button>
+   <button class="key" data-key="k">k</button>
+   <button class="key" data-key="l">l</button>  
+   <button class="key" data-key=";">;</button>  
+   <button class="key" data-key="'">'</button>  
+   <button id="enter">Enter</button>
+   <br>
+   
+   <button class="key" data-key="z">z</button>
+   <button class="key" data-key="x">x</button>
+   <button class="key" data-key="c">c</button>
+   <button class="key" data-key="v">v</button>
+   <button class="key" data-key="b">b</button>
+   <button class="key" data-key="n">n</button>
+   <button class="key" data-key="m">m</button>
+   <button class="key" data-key=",">,</button>
+   <button class="key" data-key=".">.</button>
+   <button class="key" data-key="/">/</button>
+   
+
+
+
+
+
+
+
+
+   <script type="module">
+      import { Primrose } from "https://cdn.jsdelivr.net/npm/primrose@1.1.7/primrose.min.js";
+
+      const editor = new Primrose({
+         element: document.getElementById("app")
+      });
+
+      for (const key of document.getElementsByClassName("key")) {
+         ((k) => {
+            k.addEventListener("click", () => {
+               editor.value += k.dataset.key;
+            });
+         })(key)
+      }
+
+      document.getElementById("bksp").addEventListener("click", () => {
+         const temp = editor.value;
+         editor.value = temp.substr(0, temp.length - 1);
+      });
+
+      document.getElementById("enter").addEventListener("click", () => {
+         editor.value += "\n";
+      });
+
+   </script>
+</body>
+
+</html>
